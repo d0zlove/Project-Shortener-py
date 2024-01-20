@@ -4,7 +4,8 @@
 <head>
   <title>Сокращатель ссылок</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" type="text/css" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/stile.css">
 </head>
 
 <body>
@@ -12,6 +13,10 @@
     <form action="/result" method="post">
       <h2>Project Shortener</h2>
       <div class="user-box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <input type="text" name="value" id="value">
       </div>
       <input type="submit" value="Submit">
@@ -20,4 +25,10 @@
     <p>User URL: {{ user_value }}</p>
     <p>Short URL: {{ processed_value }}</p>
   </div>
+  <nav>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </nav>
 </body>
+

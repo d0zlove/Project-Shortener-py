@@ -1,3 +1,5 @@
-function main_check(){
-    document.getElementById("UserUrl").innerHTML = "Hello world";
-}
+document.getElementById("menu-button").addEventListener("click", function() {
+    document.getElementById("menu-button").classList.toggle("open");
+    document.getElementById("menu").classList.toggle("open");
+  });
+  

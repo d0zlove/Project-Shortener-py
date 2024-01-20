@@ -33,11 +33,14 @@ router = APIRouter(
     tags=['Pages']
 )
 
-
 @router.get('/')
 def get_base_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+
+@router.get('/login')
+def get_base_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
 
 app.include_router(router)
 
@@ -65,10 +68,9 @@ def result(request: Request, value: str = Form(...)):
                                       {"request": request, "processed_value": processed_value, "user_value": value})
 
 
-@app.get("/favicon.ico", tags=["Pages"])
-async def favicon():
-    return RedirectResponse(url="static/prjgpwejg.png")
-
+@app.get("/favicon.ico")
+async def get_favicon():
+    return RedirectResponse(url="/static/prjgpwejg.png")
 
 @app.get('/{short_id}', tags=["Results"])
 def redirect_url(short_id: str):
@@ -80,6 +82,16 @@ def redirect_url(short_id: str):
     redirectable_url_str = redirectable_url_bytes.decode("utf-8")
 
     return RedirectResponse(redirectable_url_str, status_code=302)
+
+@app.post("/login")
+async def login(request: Request):
+    form = await request.form()
+    username = form.get("txt")
+    email = form.get("email")
+    password = form.get("pswd")
+    
+    return templates.TemplateResponse("login.html", {"request": request, "username": username, "email": email,"pswd": password})
+
 
 
 if __name__ == "__main__":
