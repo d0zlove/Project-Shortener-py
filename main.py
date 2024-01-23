@@ -5,6 +5,7 @@ from fastapi import FastAPI, Request, Form, APIRouter
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import RedirectResponse
+import validators
 
 # Загрузка библиотеки C++
 dll = ctypes.cdll.LoadLibrary("./ProjectShorter.dll")
@@ -59,7 +60,7 @@ def url(longURl):
 
 @app.post('/result', tags=["Results"])
 def result(request: Request, value: str = Form(...)):
-    if len(value) > 1:
+    if validators.url(value):
         processed_value = url(value)
     else:
         return templates.TemplateResponse("index.html", {"request": request, "processed_value": "Вы не указали ссылку"})
