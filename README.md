@@ -46,7 +46,7 @@ uvicorn main:app
 ## Авторы
 
 - Дмитрий https://t.me/SkytNinja
-- Вячеслав https://t.me/lolcho6
+- Вячеслав https://t.me/d0zlove
 
 ## Связь
 
